@@ -1,0 +1,5 @@
+---
+
+    - name: Cambiar el TimeZone
+      timezone:
+        name: America/Santiago

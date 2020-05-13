@@ -1,0 +1,4 @@
+vm_cos8 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
+ 
+[vm-centos8]
+vm_cos8

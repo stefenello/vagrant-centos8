@@ -1,0 +1,19 @@
+---
+
+    - name: Habilitar ssh
+      firewalld:
+        service: ssh
+        permanent: yes
+        state: enabled
+
+    - name: Habilitar http
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+
+    - name: Habilitar https
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
