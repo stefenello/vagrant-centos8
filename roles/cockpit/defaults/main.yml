@@ -1,0 +1,28 @@
+---
+cockpit_master: false
+
+master_packages:
+  cockpit-ws: present
+
+# we can poll for selinux, can we poll for other stuff? (a_sel.status==enabled if this doesn't work)
+node_packages:
+  cockpit-selinux: "{% if ansible_selinux.status is defined %}present{% else %}absent{% endif %}"
+  cockpit-pcp: present
+  cockpit-doc: "{% if cockpit_master %}present{% else %}absent{% endif %}"
+  cockpit-bridge: present
+  cockpit-ostree: absent
+  cockpit-dashboard: "{% if cockpit_master %}present{% else %}absent{% endif %}"
+  cockpit-packagekit: present
+  cockpit-integration-tests: absent
+  cockpit-kdump: present
+  cockpit-sosreport: present
+  cockpit-subscriptions: absent
+  cockpit-storaged: present
+  cockpit-networkmanager: present 
+  cockpit-system: present
+  cockpit: present
+#  cockpit-kubernetes: absent
+#  cockpit-ovirt: absent
+#  cockpit-docker: present
+#  cockpit-tests: present  
+#  cockpit-machines: "{% if ansible_virtualization_role == 'host' %}present{% else %}absent{% endif %}"

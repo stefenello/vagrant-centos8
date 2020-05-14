@@ -1,6 +1,26 @@
 ---
 
-    - name: Instalar la interfaz basada en web para administrar
-      yum: 
+    - name: Install Cockpit Master Packages
+      package:
+        name: '{{ item.key }}'
+        state: '{{ item.value }}'
+      when: 'cockpit_master'
+      with_dict: '{{ master_packages }}'
+      notify:
+      - restart cockpit
+      - open firewall
+
+    - name: Install Cockpit Node Packages
+      package:
+        name: '{{ item.key }}'
+        state: '{{ item.value }}'
+      with_dict: '{{ node_packages }}'
+      notify:
+       - restart cockpit
+
+    - name: Create Cockpit User
+      user:
         name: cockpit
-        state: present
+        shell: /bin/bash
+        groups: wheel
+        uid: 65000

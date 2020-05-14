@@ -6,7 +6,10 @@ Vagrant.configure(2) do |config|
    
     #Habilitar el reenvio de puerto Apache
     config.vm.network "forwarded_port", guest: 80, host:8080, id: "http", auto_correct: true
-   
+
+    #Habilitar el reenvio de puerto Cockpit
+    config.vm.network "forwarded_port", guest: 9090, host:9091, id: "cockpit", auto_correct: true    
+
     #Creacion de la VM en Virtualbox
     config.vm.define "vm_cos8" do |vm_cos8|
       vm_cos8.vm.provision "ansible" do |ansible|

@@ -1,7 +1,25 @@
 ---
 
-    - name: Hablitiar el servicio cockpit.socket
+    - name: restart cockpit service
       service:
-             name: cockpit.socket 
-             state: started
-             enabled: yes
+        name: cockpit
+        state: restarted
+        enabled: yes
+      when: cockpit_master
+      listen: "restart cockpit"
+
+    - name: restart cockpit socket
+      service:
+        name: cockpit.socket
+        state: restarted
+        enabled: true
+      when: cockpit_master
+      listen: "restart cockpit"
+
+    - name: open firewall
+      firewalld:
+        port: 9090/tcp
+        state: enabled
+        permanent: True
+        immediate: True
+      when: cockpit_master
