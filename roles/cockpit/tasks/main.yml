@@ -1,7 +1,6 @@
 ---
 
-    - name: Instalamos la interfaz basada en web para administrar
-      service:
-             name: cockpit.socket 
-             state: started
-             enabled: yes
+    - name: Instalar la interfaz basada en web para administrar
+      yum: 
+        name: cockpit
+        state: present

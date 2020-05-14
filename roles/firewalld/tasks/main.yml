@@ -17,3 +17,9 @@
         service: https
         permanent: yes
         state: enabled
+
+    - name: Habilitar cockpit
+      firewalld:
+        service: cockpit
+        permanent: yes
+        state: enabled

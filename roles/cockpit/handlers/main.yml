@@ -1,0 +1,7 @@
+---
+
+    - name: Hablitiar el servicio cockpit.socket
+      service:
+             name: cockpit.socket 
+             state: started
+             enabled: yes

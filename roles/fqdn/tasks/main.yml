@@ -7,6 +7,6 @@
     - name: Agregar FQDN Server en /etc/hosts
       lineinfile:
         path: /etc/hosts 
-        line: '{{ ansible_default_ipv4.address }} {{ ansible_fqdn }} {{ ansible_hostname }}'
+        line: '127.0.0.1 {{ ansible_fqdn }} {{ ansible_hostname }}'
         state: present
         backup: yes
