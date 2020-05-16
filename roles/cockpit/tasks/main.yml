@@ -4,11 +4,9 @@
       package:
         name: '{{ item.key }}'
         state: '{{ item.value }}'
-      when: 'cockpit_master'
       with_dict: '{{ master_packages }}'
       notify:
       - restart cockpit
-      - open firewall
 
     - name: Install Cockpit Node Packages
       package:
@@ -24,3 +22,13 @@
         shell: /bin/bash
         groups: wheel
         uid: 65000
+
+    - name: open firewall
+      firewalld:
+        service: cockpit
+        state: enabled
+        permanent: True
+        immediate: True
+      notify:
+       - restart firewalld
+        

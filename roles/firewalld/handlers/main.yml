@@ -1,6 +1,7 @@
 ---
 
-    - name: Reiniciar el servicio de Firewalld
+    - name: restart firewalld
       service:
         name: firewalld
         state: restarted
+        enabled: yes

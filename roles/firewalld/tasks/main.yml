@@ -1,25 +1,34 @@
 ---
 
-    - name: Habilitar ssh
+    - name: start firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: enable ssh
       firewalld:
         service: ssh
-        permanent: yes
+        permanent: True
+        immediate: True
         state: enabled
+      notify:
+       - restart firewalld
 
-    - name: Habilitar http
+    - name: enable http
       firewalld:
         service: http
-        permanent: yes
+        permanent: True
+        immediate: True
         state: enabled
+      notify:
+       - restart firewalld
 
-    - name: Habilitar https
+    - name: enable https
       firewalld:
         service: https
-        permanent: yes
+        permanent: True
+        immediate: True
         state: enabled
-
-    - name: Habilitar cockpit
-      firewalld:
-        service: cockpit
-        permanent: yes
-        state: enabled
+      notify:
+       - restart firewalld

@@ -1,25 +1,13 @@
 ---
 
-    - name: restart cockpit service
+    - name: restart cockpit
       service:
         name: cockpit
         state: restarted
         enabled: yes
-      when: cockpit_master
-      listen: "restart cockpit"
 
-    - name: restart cockpit socket
+    - name: restart cockpit.socket
       service:
         name: cockpit.socket
         state: restarted
-        enabled: true
-      when: cockpit_master
-      listen: "restart cockpit"
-
-    - name: open firewall
-      firewalld:
-        port: 9090/tcp
-        state: enabled
-        permanent: True
-        immediate: True
-      when: cockpit_master
+        enabled: yes
