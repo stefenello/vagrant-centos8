@@ -1,0 +1,8 @@
+---
+
+firewalld_services:
+  ssh: enabled 
+  http: enabled
+  https: enabled
+  cockpit: enabled
+
